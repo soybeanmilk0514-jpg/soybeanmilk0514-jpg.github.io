@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project · Subeen Joo Semiconductor Portfolio</title>
+<meta name="description" content="Project detail page for Subeen Joo's semiconductor engineering portfolio.">
+<style>
+:root{--bg:#0b0f17;--panel:#121925;--panel2:#182131;--text:#eef3f8;--muted:#9eacbd;--line:#273246;--accent:#7dd3fc;--accent2:#c4b5fd;--max:980px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.72}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:20;background:rgba(11,15,23,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topin{max-width:var(--max);margin:auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-weight:800;color:var(--text)}.nav{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem}.nav a{color:var(--muted)}
+.hero{border-bottom:1px solid var(--line);background:radial-gradient(circle at 80% 10%,rgba(125,211,252,.1),transparent 34%),radial-gradient(circle at 20% 25%,rgba(196,181,253,.08),transparent 28%)}
+.hero-in{max-width:var(--max);margin:auto;padding:70px 22px 52px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}
+h1{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.03;letter-spacing:-.045em;margin:12px 0 18px}
+.summary{color:#c5d0dc;font-size:1.06rem;max-width:820px;margin:0 0 24px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;border:1px solid var(--line);background:var(--panel);padding:10px 15px;border-radius:11px;font-weight:700;color:var(--text)}.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+main{max-width:var(--max);margin:auto;padding:38px 22px 80px}
+.loading,.error{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;color:var(--muted)}
+.markdown-body{background:linear-gradient(180deg,var(--panel),#0f1621);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,4vw,42px);overflow-wrap:anywhere}
+.markdown-body h1,.markdown-body h2,.markdown-body h3{letter-spacing:-.02em;line-height:1.25;color:var(--text);margin-top:1.5em}
+.markdown-body h1{font-size:2rem;border-bottom:1px solid var(--line);padding-bottom:.35em}.markdown-body h2{font-size:1.5rem;border-bottom:1px solid var(--line);padding-bottom:.25em}.markdown-body h3{font-size:1.18rem}
+.markdown-body p,.markdown-body li{color:#c6d0dc}.markdown-body strong{color:var(--text)}
+.markdown-body code{background:#0a0e15;border:1px solid var(--line);border-radius:6px;padding:.12em .35em}.markdown-body pre{background:#080c12;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto}.markdown-body pre code{border:0;padding:0}
+.markdown-body blockquote{margin:1em 0;border-left:3px solid var(--accent2);padding:.25em 1em;color:var(--muted);background:rgba(196,181,253,.05)}
+.markdown-body table{border-collapse:collapse;width:100%;display:block;overflow:auto}.markdown-body th,.markdown-body td{border:1px solid var(--line);padding:8px 10px}.markdown-body th{background:var(--panel2)}
+.markdown-body img{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line);display:block;margin:18px auto}
+.markdown-body hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.foot{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:25px 20px 36px;font-size:.9rem}
+@media(max-width:700px){.topin{align-items:flex-start;flex-direction:column}.hero-in{padding-top:48px}.nav{gap:11px}.markdown-body{padding:20px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<header class="top"><div class="topin"><a class="brand" href="./">Subeen Joo · Semiconductor Portfolio</a><nav class="nav"><a href="./#projects">PROJECTS</a><a id="repoTop" href="#">GITHUB</a></nav></div></header>
+<section class="hero"><div class="hero-in"><div class="eyebrow" id="eyebrow">Project Detail</div><h1 id="title">Loading project…</h1><p class="summary" id="summary"></p><div class="actions"><a class="btn primary" href="./#projects">← Back to Portfolio</a><a class="btn" id="repoBtn" href="#">GitHub Repository</a></div></div></section>
+<main><div id="loading" class="loading">프로젝트 문서를 불러오는 중입니다.</div><article id="content" class="markdown-body" hidden></article><div id="error" class="error" hidden></div></main>
+<footer class="foot">Subeen Joo · Semiconductor Engineering Portfolio · 2026</footer>
+<script>
+const owner="soybeanmilk0514-jpg";
+const projects={
+"TCAD-MicroLED-Sidewall-Carrier-Confinement":{title:"MicroLED Sidewall Carrier Confinement",eyebrow:"Ongoing Research · 2026.09–Present",summary:"4 µm InGaN/GaN MicroLED의 sidewall carrier loss와 SRH recombination을 줄이기 위한 TCAD 연구입니다."},
+"TCAD-PMOS-Process-Optimization":{title:"PMOS Process Optimization",eyebrow:"TCAD · 2026.04",summary:"PMOS 공정 변환과 implantation·annealing 조건에 따른 전기적 특성 trade-off를 분석한 Sentaurus TCAD 프로젝트입니다."},
+"TCAD-NMOS-HKMG-Halo-Optimization":{title:"NMOS HKMG & Halo Optimization",eyebrow:"TCAD · 2026.05–06",summary:"60 nm NMOS에서 HfO₂/TiN high-k metal gate와 halo implantation 조건에 따른 단채널 특성과 성능 변화를 분석했습니다."},
+"TCAD-FinFET-SiGe-Stress-Engineering":{title:"FinFET SiGe Stress Engineering",eyebrow:"TCAD · 2026.08–09",summary:"pMOS FinFET의 embedded SiGe Source/Drain에서 Ge 조성과 recess 조건이 channel stress와 전기적 특성에 미치는 영향을 비교했습니다."},
+"High-k-SE-Xray-Hybrid-Metrology":{title:"High-k SE–X-ray Hybrid Metrology",eyebrow:"Metrology · 2026.07",summary:"High-k 박막 분석에서 spectroscopic ellipsometry와 X-ray 계측을 결합하는 hybrid metrology를 정리한 프로젝트입니다."},
+"Wearable-Healthcare-Low-Power-SoC-Sensor-IP":{title:"Wearable Low-Power SoC & Sensor IP",eyebrow:"Technology Study",summary:"웨어러블 헬스케어 시스템의 sensor IP, low-power SoC, 소자·공정·패키징 관점을 연결해 분석했습니다."},
+"CO-WEEK-Semiconductor-Industry-Insights":{title:"CO-WEEK Semiconductor Industry Insights",eyebrow:"Industry Study · 2026.06–07",summary:"반도체 소재·공정부터 HBM, 첨단 패키징, 양자컴퓨팅까지 산업·기술 흐름을 정리했습니다."},
+"AI-Summit-Manufacturing-Quality-AI-Field-Study":{title:"Manufacturing & Quality AI Field Study",eyebrow:"Field Study · 2026.08",summary:"AI Summit Seoul & EXPO에서 확인한 제조·품질 AI 기술을 검사 자동화, 변경 추적, 현장 지식 관리 관점에서 정리했습니다."},
+"NEPES-Semiconductor-Packaging-Industry-Field-Study":{title:"NEPES Semiconductor Packaging Industry Field Study",eyebrow:"Field Study · 2026.09",summary:"네패스 산업시찰을 중심으로 첨단 패키징, Cu plating chemistry, 공정·장비·품질의 연결점을 기록했습니다."}
+};
+const repo=new URLSearchParams(location.search).get("repo");
+const meta=projects[repo];
+const loading=document.getElementById("loading"),content=document.getElementById("content"),error=document.getElementById("error");
+if(!meta){
+ loading.hidden=true; error.hidden=false; error.innerHTML="프로젝트를 찾을 수 없습니다. <a href='./#projects'>포트폴리오로 돌아가기</a>";
+}else{
+ document.title=meta.title+" · Subeen Joo Portfolio";
+ document.getElementById("title").textContent=meta.title;
+ document.getElementById("eyebrow").textContent=meta.eyebrow;
+ document.getElementById("summary").textContent=meta.summary;
+ const repoUrl="https://github.com/"+owner+"/"+repo;
+ document.getElementById("repoTop").href=repoUrl;
+ document.getElementById("repoBtn").href=repoUrl;
+ const rawBase="https://raw.githubusercontent.com/"+owner+"/"+repo+"/main/";
+ fetch(rawBase+"README.md")
+  .then(r=>{if(!r.ok)throw new Error("README fetch failed");return r.text()})
+  .then(md=>{
+    marked.setOptions({gfm:true,breaks:false});
+    content.innerHTML=marked.parse(md);
+    content.querySelectorAll("img").forEach(img=>{
+      const src=img.getAttribute("src");
+      if(src && !/^(https?:|data:|\/\/)/i.test(src)) img.src=rawBase+src.replace(/^\.\//,"");
+    });
+    content.querySelectorAll("a").forEach(a=>{
+      const href=a.getAttribute("href");
+      if(!href || /^(https?:|mailto:|#|\/\/)/i.test(href)) return;
+      const clean=href.replace(/^\.\//,"");
+      a.href=repoUrl+"/blob/main/"+clean;
+      a.target="_blank";a.rel="noopener";
+    });
+    loading.hidden=true;content.hidden=false;
+  })
+  .catch(()=>{
+    loading.hidden=true;error.hidden=false;
+    error.innerHTML="<strong>"+meta.title+"</strong><p>"+meta.summary+"</p><p>상세 README를 불러오지 못했습니다. <a href='"+repoUrl+"'>GitHub 저장소에서 보기 →</a></p>";
+  });
+}
+</script>
+</body>
+</html>
